@@ -9,7 +9,6 @@ before_script:
 stages:
   - Static Analysis
   - Test #defines the job in Static Analysis
-  - Deploy
 
 pylint:
   stage: Static Analysis
