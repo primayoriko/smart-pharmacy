@@ -13,7 +13,7 @@ stages:
 pylint:
   stage: Static Analysis
   script:
-  - pylint src/*.py
+  - python3 -m pylint src/*.py
 
 
 pytest:
