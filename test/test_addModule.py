@@ -6,7 +6,7 @@ This script writes "Testing" into stdout. Just like that
 import sys
 sys.path.insert(1, "../src")
 
-import addModule
+import add_module as addModule
 
 def test_add() :
     assert addModule.add(0) == 1
