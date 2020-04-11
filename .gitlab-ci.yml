@@ -21,11 +21,11 @@ pytest:
   script:
   - cd test/;pytest -v
 
-MSDeploy:
-  stage: Deploy
-  script:
-  - echo "test ms depoly"
-  - cd src/
+# MSDeploy:
+#   stage: Deploy
+#   script:
+#   - echo "test ms depoly"
+#   - cd src/
   # - pyinstaller -F lintpractice.py
   # tags:
   # - deployMS
