@@ -4,9 +4,10 @@ This module is not really a module. Just a script used to test whether the linte
 This script writes "Testing" into stdout. Just like that
 """
 import sys
+import sqlite3
 sys.path.insert(1, "../src")
 
-import add_module as addModule
+import package.add_module as addModule
 
 def test_add() :
     assert addModule.add(0) == 1
