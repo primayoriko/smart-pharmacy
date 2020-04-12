@@ -1,33 +1,42 @@
-"""Main program loader
-
-Menjalankan menu data_obat_racik_baru
-"""
-from PyQt5.QtWidgets import QApplication, QLabel, QDialog, QFileDialog, QMessageBox
+# Main Program
+from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import QtGui, QtCore, QtWidgets
-from designer.data_obat_racik_baru import Ui_Dialog
+from designer.UpdateJumlahObat import Ui_MainWindow
 
-class AppWindow(QDialog):
+class AppWindow(Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self)
-        self.ui.addItemsButton.clicked.connect(self.add_item_list)
-        self.show()
-    
-    def add_item_list(self):
-        self.ui.field_namaObat1 = QtWidgets.QLineEdit(self)
-        self.ui.field_namaObat1.setGeometry(QtCore.QRect(40, 160, 281, 20))
-        self.ui.field_namaObat1.setObjectName("field_namaObat2")
-        self.ui.field_jumlah1 = QtWidgets.QLineEdit(self)
-        self.ui.field_jumlah1.setGeometry(QtCore.QRect(330, 160, 81, 20))
-        self.ui.field_jumlah1.setObjectName("field_jumlah2")
-        self.ui.field_satuan1 = QtWidgets.QComboBox(self)
-        self.ui.field_satuan1.setGeometry(QtCore.QRect(420, 160, 161, 22))
-        self.ui.field_satuan1.setObjectName("field_satuan2")
-        self.ui.addItemsButton = QtWidgets.QPushButton(self)
-        self.ui.addItemsButton.setGeometry(QtCore.QRect(40, 190, 31, 31))
+        self.ui = Ui_MainWindow()
+        self.mainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.mainWindow)
 
-app = QApplication([])
-w = AppWindow()
-w.show()
-app.exec_()
+        self.buttonOk.clicked.connect(lambda: self.confirm(self.inputID.text(), self.inputJumlah.text()))
+        self.buttonCancel.clicked.connect(self.closeWindow)
+    
+    def isInteger(self, x):
+        for char in x:
+            if ('0' <= char <= '9' or char == '-'):
+                continue
+            return False
+        return True
+
+    def confirm(self, idobat, jumlah):
+        if (not self.isInteger(idobat) or not self.isInteger(jumlah)): 
+            return
+        if (idobat == "" or jumlah == ""):
+            return
+        print("IDObat : " + idobat + ", Jumlah : " + jumlah)
+        # TODO
+        # addObat()
+        self.closeWindow()
+
+    def closeWindow(self):
+        self.mainWindow.close()
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    ui = AppWindow()
+    ui.mainWindow.show()
+    sys.exit(app.exec_())
