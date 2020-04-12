@@ -2,3 +2,4 @@ pylint
 pytest
 pyinstaller
 PyQt5==5.14
+pytest-qt
