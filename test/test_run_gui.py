@@ -46,4 +46,4 @@ def test_main(qtbot):
             ('Paracetamol', '500', 'Gram'), ('Ibuprofen','100', 'Gram')
         ]
     }
-    app = QtCore.QCoreApplication([])
+    app = QApplication([])
