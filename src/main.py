@@ -5,6 +5,7 @@ Menjalankan menu data_obat_racik_baru
 from PyQt5.QtWidgets import QApplication, QLabel, QDialog, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore, QtWidgets
 from designer.data_obat_racik_baru import Ui_Dialog
+import sqlite3
 
 class AppWindow(QDialog):
     """AppWindow class
@@ -45,7 +46,16 @@ class AppWindow(QDialog):
         alert.setStandardButtons(QMessageBox.Ok)
         alert.exec_()
 
+def get_dialog_data(parent, count):
+    retval = []
+    for i in range (1, count+1) :
+        tupl = (parent.findChild(QtWidgets.QLineEdit, "field_namaObat" + str(i)).text(),
+                parent.findChild(QtWidgets.QLineEdit, "field_jumlah" + str(i)).text())
+        retval.append(tupl)
+    return { "nama" : parent.ui.fieldNamaResep.text(), "data" : retval }
+
 app = QApplication([])
 w = AppWindow()
 # w.show()
 app.exec_()
+print(get_dialog_data(w, w.count))
