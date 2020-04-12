@@ -7,13 +7,12 @@ before_script:
   - pip3 install -r requirements.txt # different stages in the pipeline
 
 stages:
-  - Static Analysis
   - Test #defines the job in Static Analysis
 
-pylint:
-  stage: Static Analysis
-  script:
-  - python3 -m pylint src/*.py
+# pylint:
+#   stage: Static Analysis
+#   script:
+#   - python3 -m pylint src/*.py
 
 
 pytest:

@@ -7,27 +7,45 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 from designer.data_obat_racik_baru import Ui_Dialog
 
 class AppWindow(QDialog):
+    """AppWindow class
+
+    Taking layout information from Ui_Dialog class and adding logic
+    """
     def __init__(self):
         super().__init__()
+        self.count = 1
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.addItemsButton.clicked.connect(self.add_item_list)
+        self.ui.vNamaObat.setAlignment(QtCore.Qt.AlignTop)
+        self.ui.vJumlah.setAlignment(QtCore.Qt.AlignTop)
+        self.ui.vSatuan.setAlignment(QtCore.Qt.AlignTop)
         self.show()
     
     def add_item_list(self):
-        self.ui.field_namaObat1 = QtWidgets.QLineEdit(self)
-        self.ui.field_namaObat1.setGeometry(QtCore.QRect(40, 160, 281, 20))
-        self.ui.field_namaObat1.setObjectName("field_namaObat2")
-        self.ui.field_jumlah1 = QtWidgets.QLineEdit(self)
-        self.ui.field_jumlah1.setGeometry(QtCore.QRect(330, 160, 81, 20))
-        self.ui.field_jumlah1.setObjectName("field_jumlah2")
-        self.ui.field_satuan1 = QtWidgets.QComboBox(self)
-        self.ui.field_satuan1.setGeometry(QtCore.QRect(420, 160, 161, 22))
-        self.ui.field_satuan1.setObjectName("field_satuan2")
-        self.ui.addItemsButton = QtWidgets.QPushButton(self)
-        self.ui.addItemsButton.setGeometry(QtCore.QRect(40, 190, 31, 31))
+        field_namaObat2 = QtWidgets.QLineEdit(self)
+        field_namaObat2.setObjectName("field_namaObat" + str(self.count + 1))
+        self.ui.vNamaObat.addWidget(field_namaObat2)
+        field_jumlah2 = QtWidgets.QLineEdit(self)
+        field_jumlah2.setObjectName("field_jumlah" + str(self.count + 1))
+        self.ui.vJumlah.addWidget(field_jumlah2)
+        field_satuan2 = QtWidgets.QComboBox(self)
+        field_satuan2.setObjectName("field_satuan2" + str(self.count + 1))
+        self.ui.vSatuan.addWidget(field_satuan2)
+        if self.count < 9:
+            self.ui.addItemsButton.setGeometry(40, 160 + self.count * 30, 31, 31)
+        self.count += 1
+        # print(self.ui.field_namaObat2)
+        # print(self.ui.field_namaObat1)
+    def show_alert_box(self, msg):
+        alert = QMessageBox()
+        alert.setText(msg)
+        alert.setWindowTitle("Error")
+        alert.setIcon(QMessageBox.Critical)
+        alert.setStandardButtons(QMessageBox.Ok)
+        alert.exec_()
 
 app = QApplication([])
 w = AppWindow()
-w.show()
+# w.show()
 app.exec_()

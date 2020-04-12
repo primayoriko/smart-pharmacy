@@ -129,36 +129,6 @@
     <string>Satuan</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="field_namaObat1">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>130</y>
-     <width>281</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="field_jumlah1">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>130</y>
-     <width>81</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="field_satuan1">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>130</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="addItemsButton">
    <property name="geometry">
     <rect>
@@ -177,6 +147,71 @@
     <string>+</string>
    </property>
   </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>130</y>
+     <width>281</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vNamaObat">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QLineEdit" name="field_namaObat1"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>130</y>
+     <width>81</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vJumlah">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QLineEdit" name="field_jumlah1"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>130</y>
+     <width>160</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="vSatuan">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QComboBox" name="field_satuan1"/>
+    </item>
+   </layout>
+  </widget>
+  <zorder>buttonBox</zorder>
+  <zorder>titleLabel</zorder>
+  <zorder>resepName</zorder>
+  <zorder>headerNamaObat</zorder>
+  <zorder>fieldNamaResep</zorder>
+  <zorder>headerJumlah</zorder>
+  <zorder>headerSatuan</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>verticalLayoutWidget_2</zorder>
+  <zorder>verticalLayoutWidget_3</zorder>
+  <zorder>addItemsButton</zorder>
  </widget>
  <resources/>
  <connections>
