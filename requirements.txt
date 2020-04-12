@@ -1,3 +1,4 @@
 pylint
 pytest
 pyinstaller
+PyQt5
