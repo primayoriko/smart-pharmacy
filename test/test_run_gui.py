@@ -11,7 +11,7 @@ sys.path.insert(1, "../src")
 
 import main
 
-def test_main(qtbot):
+def not_test_main(qtbot):
     wt = main.AppWindow()
     qtbot.keyClicks(wt.ui.fieldNamaResep, "Pramanix")
     qtbot.keyClicks(wt.findChild(QtWidgets.QLineEdit, "field_namaObat1"), "Paracetamol")
