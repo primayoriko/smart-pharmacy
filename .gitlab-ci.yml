@@ -14,7 +14,7 @@ stages:
 pylint:
   stage: Static Analysis
   script:
-  - python3 -m pylint src/*.py
+  - python3 -m pylint src/addObat/*.py
 
 
 pytest:
