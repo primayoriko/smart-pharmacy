@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets, uic
-from AddObatUI import *
+from AddObat import AddObat
 import sys
 
 if __name__ == '__main__':
-    # print("hello world")
     addObatApp = QtWidgets.QApplication(sys.argv)
-    addObatWindow = AddObatUI()
-    addObatApp.exec_()
+    addObatWindow = AddObat()
+    addObatWindow.show()
+    sys.exit(addObatApp.exec_())
