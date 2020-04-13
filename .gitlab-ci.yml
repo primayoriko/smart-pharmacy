@@ -3,33 +3,21 @@
 # https://hub.docker.com/r/library/python/tags/
 image: "python:3.7" #commands to run in the Docker container before starting each job.
 before_script:
-  - python --version
-  - pip install -r requirements.txt # different stages in the pipeline
+  - python3 --version
+  - pip3 install -r requirements.txt # different stages in the pipeline
+  - pip3 install PyQt5
 
 stages:
   - Static Analysis
   - Test #defines the job in Static Analysis
-  - Deploy
 
 pylint:
   stage: Static Analysis
   script:
-  - pylint -d C0301 src/*.py
+  - python3 -m pylint src/*.py
 
 
 pytest:
   stage: Test
   script:
   - cd test/;pytest -v
-
-MSDeploy:
-  stage: Deploy
-  script:
-  - echo "test ms depoly"
-  - cd src/
-  # - pyinstaller -F lintpractice.py
-  # tags:
-  # - deployMS
-  # artifacts:
-  #   paths:
-  #     - src/dist/*.exe
