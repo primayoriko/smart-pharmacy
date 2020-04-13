@@ -10,7 +10,7 @@ sys.path.insert(1, "../src")
 import main as main
 
 def test_main() :
-    assert main.AppWindow.isInteger(123012) == True
-    assert main.AppWindow.isInteger(1230.12) == False
-    assert main.AppWindow.isInteger(-123012) == True
+    assert main.AppWindow.isInteger("123012") == True
+    assert main.AppWindow.isInteger("1230.12") == False
+    assert main.AppWindow.isInteger("-123012") == True
     assert main.AppWindow.isInteger("k2was2") == False

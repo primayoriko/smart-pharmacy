@@ -1,6 +1,5 @@
 # Main Program
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5 import QtGui, QtCore, QtWidgets
+from PyQt5 import QtWidgets
 from designer.UpdateJumlahObat import Ui_MainWindow
 
 class AppWindow(Ui_MainWindow):
@@ -13,7 +12,7 @@ class AppWindow(Ui_MainWindow):
         self.buttonOk.clicked.connect(lambda: self.confirm(self.inputID.text(), self.inputJumlah.text()))
         self.buttonCancel.clicked.connect(self.closeWindow)
     
-    def isInteger(self, x):
+    def isInteger(x):
         for char in x:
             if ('0' <= char <= '9' or char == '-'):
                 continue
@@ -21,7 +20,7 @@ class AppWindow(Ui_MainWindow):
         return True
 
     def confirm(self, idobat, jumlah):
-        if (not self.isInteger(idobat) or not self.isInteger(jumlah)): 
+        if (not AppWindow.isInteger(idobat) or not AppWindow.isInteger(jumlah)): 
             return
         if (idobat == "" or jumlah == ""):
             return
@@ -32,7 +31,6 @@ class AppWindow(Ui_MainWindow):
 
     def closeWindow(self):
         self.mainWindow.close()
-
 
 if __name__ == "__main__":
     import sys
