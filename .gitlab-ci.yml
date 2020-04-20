@@ -16,6 +16,7 @@ pylint:
   script:
   - python -m pylint src/addObat/
   - python -m pylint src/package/
+  - python -m pylint src/showObat/
   allow_failure: true
 
 pytest:
