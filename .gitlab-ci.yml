@@ -5,10 +5,9 @@ image: "python:3.7" #commands to run in the Docker container before starting eac
 before_script:
   - python --version
   - pip install -r requirements.txt # different stages in the pipeline
-  - pip install PyQt5==5.14
+  - pip install PyQt5
 
 stages:
-  - Static Analysis
   - Test #defines the job in Static Analysis
 
 pylint:
