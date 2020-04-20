@@ -8,16 +8,37 @@ before_script:
   - pip3 install PyQt5
 
 stages:
-  - Static Analysis
   - Test #defines the job in Static Analysis
 
+<<<<<<< HEAD
 pylint:
   stage: Static Analysis
   script:
   - python3 -m pylint src/*.py
+=======
+# pylint:
+#   stage: Static Analysis
+#   script:
+#   - python3 -m pylint src/*.py
+>>>>>>> tambah_data_obat_racik_baru
 
 
 pytest:
   stage: Test
   script:
   - cd test/;pytest -v
+<<<<<<< HEAD
+=======
+
+# MSDeploy:
+#   stage: Deploy
+#   script:
+#   - echo "test ms depoly"
+#   - cd src/
+  # - pyinstaller -F lintpractice.py
+  # tags:
+  # - deployMS
+  # artifacts:
+  #   paths:
+  #     - src/dist/*.exe
+>>>>>>> tambah_data_obat_racik_baru
