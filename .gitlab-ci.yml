@@ -14,8 +14,8 @@ stages:
 pylint:
   stage: Static Analysis
   script:
-  - python -m pylint src/addObat/*.py
-
+  - python -m pylint src/addObat/AddObat.py
+  - python -m pylint src/addObat/__init__.py
 
 pytest:
   stage: Test
