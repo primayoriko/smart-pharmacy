@@ -11,19 +11,27 @@
 
 # *Capture* Layar
 ## Modul: Tambah Data Obat Racik Baru
+<<<<<<< HEAD
 ![](doc\ScreenShots\AddObatRacikScreenCapture\addObatRacik1.jpg)
 ![](doc\ScreenShots\AddObatRacikScreenCapture\addObatRacik2.jpg)
+=======
+![](doc/ScreenShots/AddObatRacikScreenCapture/addObatRacik1.jpg)
+>>>>>>> 9d93bc70491913a6dbbcca0e9c7f1946c3d3a139
 
 ## Modul: Tampilkan Jumlah Obat
-![](doc/ShowObatScreenCapture/mainwindow1.jpg)
+![](doc/ScreenShots/ShowObatScreenCapture/mainwindow2.jpg)
 
 ## Modul: Update Jumlah Obat
-![](doc/UpdateJumlahObatScreenCapt/mainwindow.jpg)
+![](doc/ScreenShots/UpdateJumlahObat/mainwindow.jpg)
 
 ## Modul: Penambahan Obat Baru
+<<<<<<< HEAD
 ![](doc\ScreenShots\PenambahanObat\successAdd.jpg)
 ![](doc\ScreenShots\PenambahanObat\failAdd1.jpg)
 ![](doc\ScreenShots\PenambahanObat\failAdd2.jpg)
+=======
+![](doc/ScreenShots/PenambahanObat/successAdd.jpg)
+>>>>>>> 9d93bc70491913a6dbbcca0e9c7f1946c3d3a139
 
 # Daftar Realisasi Tabel Basis Data
 <ul>
