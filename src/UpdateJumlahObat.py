@@ -16,7 +16,7 @@ class AppWindow(Ui_MainWindow):
         self.buttonOk.clicked.connect(lambda: self.confirm(self.inputID.text(), self.inputJumlah.text(), self.inputTanggal.date(), self.inputCacat.isChecked()))
         self.buttonCancel.clicked.connect(self.closeWindow)
 
-        self.connectDB('Obat.db')
+        self.connectDB('../db/Obat.db')
 
     def connectDB(self, DBName):
         try:
