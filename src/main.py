@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QApplication, QLabel, QDialog, QFileDialog, QMessage
 from PyQt5 import QtGui, QtCore, QtWidgets
 from designer.data_obat_racik_baru import Ui_Dialog
 import sqlite3
+import uuid
 
 satuanList = ["Gram", "Miligram", "Tablet", "Kapsul", "Sachet"]
 
@@ -58,12 +59,89 @@ def get_dialog_data(parent, count):
         retval.append(tupl)
     return { "nama" : parent.ui.fieldNamaResep.text(), "data" : retval }
 
+def storeDialogDataInDb(data, dbPath):
+    dbHandler = sqlite3.connect(dbPath)
+    # check if ObatRacikExists
+    dbCursor = dbHandler.cursor()
+    dbCursor.execute(("SELECT nama FROM ObatRacik WHERE nama='" + data["nama"] + "';"))
+    if (len(dbCursor.fetchall()) == 0) :
+        new_obat_racik_query = """
+            INSERT INTO ObatRacik(IDObatRacik, nama) VALUES(""" + str(uuid.uuid4().int%10000000000) + """ ,'""" + data["nama"] + """');
+        """
+        dbCursor.execute(new_obat_racik_query)
+        dbCursor.execute("SELECT IDObatRacik FROM ObatRacik WHERE nama='" + data["nama"] + "';")
+        racik = dbCursor.fetchone()
+        print(racik[0])
+        # if not exist, add new
+        for item in data["data"] :
+            queryString = """
+                INSERT INTO 
+            """
+            print(item)
+
+def create_obat_racik_table(dbPath):
+    if check_if_table_exist(dbPath, 'ObatRacik'):
+        return "Already exist!"
+    dbHandler = sqlite3.connect(dbPath)
+    dbCursor = dbHandler.cursor()
+    obat_racik_query = """
+    CREATE TABLE ObatRacik (
+        IDObatRacik int(10) unique not null,
+        nama varchar(30) not null,
+        deskripsi varchar(300),
+        PRIMARY KEY (IDObatRacik)
+    );
+    """
+    dbCursor.execute(obat_racik_query)
+    if check_if_table_exist(dbPath, 'ObatRacik'):
+        dbHandler.close()
+        return "Create Failed!"
+    dbHandler.close()
+    return "Create Success!"
+
+def create_bahan_obat_racik_table(dbPath):
+    if check_if_table_exist(dbPath, 'BahanObatRacik'):
+        return "Already exist!"
+    dbHandler = sqlite3.connect(dbPath)
+    dbCursor = dbHandler.cursor()
+    obat_racik_query = """
+    CREATE TABLE BahanObatRacik (
+        IDObatRacik int(10) unique not null,
+        IDObat int(8) not null,
+        jumlah decimal(7,3) not null,
+        satuan text not null,
+        PRIMARY KEY (IDObatRacik)
+    );
+    """
+    dbCursor.execute(obat_racik_query)
+    if check_if_table_exist(dbPath, 'BahanObatRacik'):
+        dbHandler.close()
+        return "Create Failed!"
+    dbHandler.close()
+    return "Create Success!"
+
+def check_if_table_exist(db_path, table_name):
+    dbHandler = sqlite3.connect(db_path)
+    dbCursor = dbHandler.cursor()
+    check_table_query = """
+    SELECT name FROM sqlite_master WHERE name='""" + table_name + """'
+    AND type='table';
+    """
+    dbCursor.execute(check_table_query)
+    if len(dbCursor.fetchall()) > 0:
+        dbHandler.close()
+        return True
+    dbHandler.close()
+    return False
+
 def run():
     app = QApplication([])
     w = AppWindow()
     w.show()
     app.exec_()
-    print(get_dialog_data(w, w.count))
+    print(create_obat_racik_table('./db/ObatRacik.db'))
+    print(create_bahan_obat_racik_table('./db/ObatRacik.db'))
+    storeDialogDataInDb(get_dialog_data(w, w.count), './db/ObatRacik.db')
 
 if __name__ == "__main__":
     run()
