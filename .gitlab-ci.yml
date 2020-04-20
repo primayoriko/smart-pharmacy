@@ -8,7 +8,8 @@ before_script:
   - pip install PyQt5
 
 stages:
-  - Test #defines the job in Static Analysis
+  - Static Analysis #defines the job in Static Analysis
+  - Test
 
 pylint:
   stage: Static Analysis
