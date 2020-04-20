@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from PyQt5 import QtWidgets, QtGui, uic
 from sqlite3 import Error
 import sqlite3
@@ -46,10 +45,5 @@ def test_addEntry_radiobuttonbelumdipilih():
     testAddObat.clearDB()
     assert res == 1
 
-=======
-import sys
-sys.path.insert(1, '../src/addObat/')
-import window
->>>>>>> master
 
 
