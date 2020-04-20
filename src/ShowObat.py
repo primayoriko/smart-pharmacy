@@ -29,11 +29,11 @@ class TableModel(QAbstractTableModel):
         return len(self._data)
 
     def columnCount(self, index):
-        return len(self._data[0])
+        return len(self.header_labels)
 
 class TableModel2(QAbstractTableModel):
 
-    header_labels = ['IDObatRacik', 'Nama Resep', 'DaftarObat']
+    header_labels = ['IDObatRacik', 'Nama Resep', 'Deskripsi', 'Nama Obat', 'Jumlah', 'Satuan']
 
     def __init__(self, data):
         super(TableModel2, self).__init__()
@@ -52,7 +52,7 @@ class TableModel2(QAbstractTableModel):
         return len(self._data)
 
     def columnCount(self, index):
-        return len(self._data[0])
+        return len(self.header_labels)
 
 class AppWindow(Ui_MainWindow):
     def __init__(self):
@@ -85,7 +85,7 @@ class AppWindow(Ui_MainWindow):
 
     def fetchObat(self):
         #get data obat from database obat
-        con = self.connectDB('Obat.db')
+        con = self.connectDB('../db/Obat.db')
         cursorDB = con.cursor()
         check = cursorDB.execute("SELECT * FROM Obat")
         data = check.fetchall()
@@ -95,16 +95,15 @@ class AppWindow(Ui_MainWindow):
 
     def fetchObatRacik(self):
         #get data from database obat racik
-
-        #dummy data from a list
-        data = [
-            ['paracetamol', 'yoriko', 100],
-            ['anti covid 19', 'lol', 100000],
-            ['auto grandmaster', 'cf', 1],
-        ]
+        con = self.connectDB('../db/ObatRacik.db')
+        cursorDB = con.cursor()
+        check = cursorDB.execute("SELECT * FROM ObatRacik NATURAL JOIN BahanObatRacik WHERE ObatRacik.IDObatRacik = BahanObatRacik.IDObatRacik")
+        data = check.fetchall()
+        # data = []
 
         self.model_2 = TableModel2(data)
         self.tableView_2.setModel(self.model_2)
+
 
     def closeWindow(self):
         self.mainWindow.close()
