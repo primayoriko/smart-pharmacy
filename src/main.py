@@ -74,29 +74,33 @@ class AppWindow(Ui_MainWindow):
         item = self.tableView.currentItem()
         print(item.text())
     
+    def connectDB(self, database):
+        try:
+            con = sqlite3.connect(database)
+            return con
+        except Error as e:
+            self.showError(str(e))
+    
     def fetchObat(self):
         #get data obat from database obat
-        con = sqlite3.connect('Obat.db')
+        con = self.connectDB('Obat.db')
         cursorDB = con.cursor()
         check = cursorDB.execute("SELECT * FROM Obat")
         data = check.fetchall()
-
-        # data = [
-        #     ['paracetamol', 'yoriko', 100, 'kaplet'],
-        #     ['anti covid 19', 'lol', 100000, 'dus'],
-        #     ['auto grandmaster', 'cf', 1, 'buah'],
-        # ]
 
         self.model = TableModel(data)
         self.tableView.setModel(self.model)
     
     def fetchObatRacik(self):
         #get data from database obat racik
+
+        #dummy data from a list
         data = [
             ['paracetamol', 'yoriko', 100],
             ['anti covid 19', 'lol', 100000],
             ['auto grandmaster', 'cf', 1],
         ]
+
         self.model_2 = TableModel2(data)
         self.tableView_2.setModel(self.model_2)
 
