@@ -15,8 +15,10 @@ pylint:
   stage: Static Analysis
   script:
   - python -m pylint src/addObat/
+  allow_failure: true
 
 pytest:
   stage: Test
   script:
   - cd test/;pytest -v
+  allow_failure: true
