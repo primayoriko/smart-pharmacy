@@ -75,7 +75,9 @@ def storeDialogDataInDb(data, dbPath):
         # if not exist, add new
         for item in data["data"] :
             queryString = """
-                INSERT INTO 
+                INSERT INTO BahanObatRacik(IDObatRacik, IDObat, jumlah, satuan)
+                VALUES(""" + str(racik[0]) + """, """ + str(item[0]) + """, 
+                """ + str(item[1]) + """, '""" + str(item[2]) + """');
             """
             print(item)
 
@@ -106,11 +108,11 @@ def create_bahan_obat_racik_table(dbPath):
     dbCursor = dbHandler.cursor()
     obat_racik_query = """
     CREATE TABLE BahanObatRacik (
-        IDObatRacik int(10) unique not null,
-        IDObat int(8) not null,
+        IDObatRacik int(10) not null,
+        nama text not null,
         jumlah decimal(7,3) not null,
         satuan text not null,
-        PRIMARY KEY (IDObatRacik)
+        PRIMARY KEY (IDObatRacik, nama)
     );
     """
     dbCursor.execute(obat_racik_query)
