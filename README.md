@@ -11,6 +11,8 @@
 
 # *Capture* Layar
 ## Modul: Tambah Data Obat Racik Baru
+![](doc\ScreenShots\AddObatRacikScreenCapture\addObatRacik1.jpg)
+![](doc\ScreenShots\AddObatRacikScreenCapture\addObatRacik2.jpg)
 
 ## Modul: Tampilkan Jumlah Obat
 ![](doc/ShowObatScreenCapture/mainwindow1.jpg)
@@ -19,7 +21,9 @@
 ![](doc/UpdateJumlahObatScreenCapt/mainwindow.jpg)
 
 ## Modul: Penambahan Obat Baru
-
+![](doc\ScreenShots\PenambahanObat\successAdd.jpg)
+![](doc\ScreenShots\PenambahanObat\failAdd1.jpg)
+![](doc\ScreenShots\PenambahanObat\failAdd2.jpg)
 
 # Daftar Realisasi Tabel Basis Data
 <ul>
