@@ -13,6 +13,7 @@
 ## Modul: Tambah Data Obat Racik Baru
 
 ## Modul: Tampilkan Jumlah Obat
+![](doc/ShowObatScreenCapture/mainwindow1.jpg)
 
 ## Modul: Update Jumlah Obat
 ![](doc/UpdateJumlahObatScreenCapt/mainwindow.jpg)
