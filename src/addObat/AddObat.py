@@ -45,10 +45,10 @@ class AddObat(QtWidgets.QWidget):
             cacatOpt = -1
             if(self.Yes.isChecked()):
                 cacatOpt = 1
-            else:
+            elif(self.No.isChecked()):
                 cacatOpt = 0
             entry = (int(self.IDObat.toPlainText()), self.NamaObat.toPlainText(), int(self.JumlahObat.toPlainText()), self.DescObat.toPlainText(), self.KadaluarsaObat.date().toString("dd/MM/yyyy"), cacatOpt)
-            self.addEntry(entry)            
+            self.addEntry(entry, False)            
             return 0
         except Exception as e:
             self.showError(str(e))
