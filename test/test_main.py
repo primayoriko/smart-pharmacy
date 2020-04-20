@@ -7,7 +7,7 @@ import sys
 import sqlite3
 sys.path.insert(1, "../src")
 
-import main as main
+import UpdateJumlahObat as main
 
 def test_main() :
     assert main.AppWindow.isInteger("123012") == True
