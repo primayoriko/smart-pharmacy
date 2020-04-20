@@ -3,9 +3,9 @@
 # https://hub.docker.com/r/library/python/tags/
 image: "python:3.7" #commands to run in the Docker container before starting each job.
 before_script:
-  - python3 --version
-  - pip3 install -r requirements.txt # different stages in the pipeline
-  - pip3 install PyQt5==5.14
+  - python --version
+  - pip install -r requirements.txt # different stages in the pipeline
+  - pip install PyQt5==5.14
 
 stages:
   - Static Analysis
@@ -14,7 +14,7 @@ stages:
 pylint:
   stage: Static Analysis
   script:
-  - python3 -m pylint src/addObat/*.py
+  - python -m pylint src/addObat/*.py
 
 
 pytest:
