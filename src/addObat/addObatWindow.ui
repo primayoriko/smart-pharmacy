@@ -88,7 +88,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QRadioButton" name="Yes">
+  <widget class="QRadioButton" name="radioButton">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -137,7 +137,11 @@
     </rect>
    </property>
   </widget>
+<<<<<<< HEAD
   <widget class="QRadioButton" name="No">
+=======
+  <widget class="QRadioButton" name="radioButton_2">
+>>>>>>> master
    <property name="geometry">
     <rect>
      <x>100</x>

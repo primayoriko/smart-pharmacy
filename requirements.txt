@@ -1,5 +1,5 @@
 pylint
 pytest
 pyinstaller
-PyQt5==5.14
+PyQt5
 pytest-qt
