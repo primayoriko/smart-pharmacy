@@ -25,8 +25,8 @@
 <ul>
     <li>Obat.db merealisasikan 
     Obat = (ID, Nama, Jumlah, Deskripsi, Kadaluarsa, Cacat)</li>
-    <li>ObatRacik.db merealisasikan
+    <li>Obat.db merealisasikan
     ObatRacik = (IDObatRacik, nama, deskripsi)</li>
-    <li>BahanObatRacik.db merealisasikan
+    <li>Obat.db merealisasikan
     BahanObatRacik = (IDObatRacik, nama, jujmlah, satuan)</li>
 </ul>
