@@ -9,11 +9,12 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5 import QtWidgets, QtCore
 sys.path.insert(1, "../src")
 
-import main
+import AddObatRacik as main
 
-app = QApplication([])
+
 
 def test_main():
+    addObatRacikApp = QtWidgets.QApplication(sys.argv)
     wt = main.AppWindow()
     QTest.keyClicks(wt.ui.fieldNamaResep, "Pramanix")
     QTest.keyClicks(wt.findChild(QtWidgets.QLineEdit, "field_namaObat1"), "Paracetamol")
