@@ -1,11 +1,12 @@
 
 import sqlite3
 from sqlite3 import Error
+from PyQt5 import QtGui, QtCore, QtWidgets
+from PyQt5.QtGui import *
 from PyQt5.QtWidgets import QMainWindow, QListWidget
 from PyQt5.QtCore import Qt, QAbstractTableModel
-from PyQt5 import QtGui, QtCore, QtWidgets
 from designer.ShowListObat import Ui_MainWindow
-from PyQt5.QtGui import *
+
 
 class TableModel(QAbstractTableModel):
 
@@ -14,7 +15,7 @@ class TableModel(QAbstractTableModel):
     def __init__(self, data):
         super(TableModel, self).__init__()
         self._data = data
-        
+
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
             return self.header_labels[section]
@@ -37,7 +38,7 @@ class TableModel2(QAbstractTableModel):
     def __init__(self, data):
         super(TableModel2, self).__init__()
         self._data = data
-        
+
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
             return self.header_labels[section]
@@ -58,10 +59,12 @@ class AppWindow(Ui_MainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.mainWindow = QMainWindow()
+        self.mainWindow.setWindowTitle('Data Obat dan Obat Racik')
+        self.mainWindow.setWindowIcon(QtGui.QIcon('../assets/img/icon.png'))
         self.setupUi(self.mainWindow)
         self.fetchObat()
         self.fetchObatRacik()
-    
+
     def connectDB(self, DBName):
         try:
             self.con = sqlite3.connect(DBName)
@@ -69,7 +72,6 @@ class AppWindow(Ui_MainWindow):
         except Error as e:
             self.showError(str(e))
 
-    
     def clicked(self, qmodelindex):
         item = self.tableView.currentItem()
         print(item.text())
@@ -80,7 +82,7 @@ class AppWindow(Ui_MainWindow):
             return con
         except Error as e:
             self.showError(str(e))
-    
+
     def fetchObat(self):
         #get data obat from database obat
         con = self.connectDB('Obat.db')
@@ -90,7 +92,7 @@ class AppWindow(Ui_MainWindow):
 
         self.model = TableModel(data)
         self.tableView.setModel(self.model)
-    
+
     def fetchObatRacik(self):
         #get data from database obat racik
 

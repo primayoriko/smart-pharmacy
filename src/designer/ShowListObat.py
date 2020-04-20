@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_2, "")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 10, 131, 111))
-        self.label.setText("")
+        self.label.setText("lol")
         self.label.setPixmap(QtGui.QPixmap("../../assets/img/icon.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
