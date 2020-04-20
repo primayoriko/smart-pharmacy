@@ -1,7 +1,6 @@
-from PyQt5 import QtWidgets, QtGui, uic
-from sqlite3 import Error
 import sqlite3
-# import sys
+from sqlite3 import Error
+from PyQt5 import QtWidgets, QtGui, uic
 
 class AddObat(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
@@ -21,11 +20,11 @@ class AddObat(QtWidgets.QWidget):
 
     def addEntry(self, entry, testMode):
         try:
-            if(entry[0]<1):
+            if(entry[0] < 1):
                 raise Exception('ID obat harus bilangan bulat positif!')
-            if(entry[2]<1):
+            if(entry[2] < 1):
                 raise Exception('Jumlah obat harus lebih dari nol!')
-            if(entry[5]==-1):
+            if(entry[5] == -1):
                 raise Exception('Kondisi cacat atau tidak harus dirinci!')
 
             cursorDB = self.con.cursor()
@@ -51,11 +50,6 @@ class AddObat(QtWidgets.QWidget):
             entry = (int(self.IDObat.toPlainText()), self.NamaObat.toPlainText(), int(self.JumlahObat.toPlainText()), self.DescObat.toPlainText(), self.KadaluarsaObat.date().toString("dd/MM/yyyy"), cacatOpt)
             self.addEntry(entry)            
             return 0
-            # dialog = QtWidgets.QDialog()    
-            # succ_dialog = SuccessMessage(dialog)
-            # succ_dialog.setupUi(dialog)
-            # dialog.show()
-            # dialog.exec_()
         except Exception as e:
             self.showError(str(e))
             return 1
@@ -75,3 +69,8 @@ class AddObat(QtWidgets.QWidget):
         cursorDB.execute('DELETE FROM Obat')
         self.con.commit()
 
+# dialog = QtWidgets.QDialog()    
+# succ_dialog = SuccessMessage(dialog)
+# succ_dialog.setupUi(dialog)
+# dialog.show()
+# dialog.exec_()
