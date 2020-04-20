@@ -1,3 +1,6 @@
+
+import sqlite3
+from sqlite3 import Error
 from PyQt5.QtWidgets import QMainWindow, QListWidget
 from PyQt5.QtCore import Qt, QAbstractTableModel
 from PyQt5 import QtGui, QtCore, QtWidgets
@@ -6,7 +9,7 @@ from PyQt5.QtGui import *
 
 class TableModel(QAbstractTableModel):
 
-    header_labels = ['IDObat', 'Nama Obat', 'Deskripsi', 'Harga']
+    header_labels = ['ID', 'Nama', 'Jumlah', 'Deskripsi', 'Kadaluarsa', 'Cacat']
 
     def __init__(self, data):
         super(TableModel, self).__init__()
@@ -59,17 +62,31 @@ class AppWindow(Ui_MainWindow):
         self.fetchObat()
         self.fetchObatRacik()
     
+    def connectDB(self, DBName):
+        try:
+            self.con = sqlite3.connect(DBName)
+            return self.con
+        except Error as e:
+            self.showError(str(e))
+
+    
     def clicked(self, qmodelindex):
         item = self.tableView.currentItem()
         print(item.text())
     
     def fetchObat(self):
         #get data obat from database obat
-        data = [
-            ['paracetamol', 'yoriko', 100, 'kaplet'],
-            ['anti covid 19', 'lol', 100000, 'dus'],
-            ['auto grandmaster', 'cf', 1, 'buah'],
-        ]
+        con = sqlite3.connect('Obat.db')
+        cursorDB = con.cursor()
+        check = cursorDB.execute("SELECT * FROM Obat")
+        data = check.fetchall()
+
+        # data = [
+        #     ['paracetamol', 'yoriko', 100, 'kaplet'],
+        #     ['anti covid 19', 'lol', 100000, 'dus'],
+        #     ['auto grandmaster', 'cf', 1, 'buah'],
+        # ]
+
         self.model = TableModel(data)
         self.tableView.setModel(self.model)
     
