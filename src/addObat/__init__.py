@@ -5,5 +5,6 @@ import sys
 if __name__ == '__main__':
     addObatApp = QtWidgets.QApplication(sys.argv)
     addObatWindow = AddObat()
+    addObatWindow.connectDB('../../db/Obat.db')
     addObatWindow.show()
     sys.exit(addObatApp.exec_())
