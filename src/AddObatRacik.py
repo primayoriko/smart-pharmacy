@@ -7,6 +7,9 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 from designer.data_obat_racik_baru import Ui_Dialog
 import sqlite3
 import uuid
+import os
+
+default_path = os.path.join(os.path.dirname(__file__), "../Obat.db")
 
 satuanList = ["Gram", "Miligram", "Tablet", "Kapsul", "Sachet"]
 
@@ -79,7 +82,7 @@ def storeDialogDataInDb(data, dbPath):
                 VALUES(""" + str(racik[0]) + """, """ + str(item[0]) + """, 
                 """ + str(item[1]) + """, '""" + str(item[2]) + """');
             """
-            print(item)
+            # print(item)
 
 def create_obat_racik_table(dbPath):
     if check_if_table_exist(dbPath, 'ObatRacik'):
@@ -141,9 +144,9 @@ def run():
     w = AppWindow()
     w.show()
     app.exec_()
-    print(create_obat_racik_table('../db/ObatRacik.db'))
-    print(create_bahan_obat_racik_table('../db/ObatRacik.db'))
-    storeDialogDataInDb(get_dialog_data(w, w.count), '../db/ObatRacik.db')
+    print(create_obat_racik_table(default_path))
+    print(create_bahan_obat_racik_table(default_path))
+    storeDialogDataInDb(get_dialog_data(w, w.count), default_path)
 
 if __name__ == "__main__":
     run()
