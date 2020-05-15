@@ -15,7 +15,7 @@ def test_addEntry_normal():
     testAddObat.clearDB()
     assert res == 0
 
-def test_addEntry_jumlahnegatif():
+def test_addEntry_jumlahNegatif():
     addObatApp = QtWidgets.QApplication(sys.argv)
     testAddObat = AddObat()
     testAddObat.connectDB('TestDB_Obat.db')
@@ -25,7 +25,7 @@ def test_addEntry_jumlahnegatif():
     testAddObat.clearDB()
     assert res == 1
 
-def test_addEntry_idnegatif():
+def test_addEntry_idNegatif():
     addObatApp = QtWidgets.QApplication(sys.argv)
     testAddObat = AddObat()
     testAddObat.connectDB('TestDB_Obat.db')
@@ -35,13 +35,24 @@ def test_addEntry_idnegatif():
     testAddObat.clearDB()
     assert res == 1
 
-def test_addEntry_radiobuttonbelumdipilih():
+def test_addEntry_radioButtonBelumDipilih():
     addObatApp = QtWidgets.QApplication(sys.argv)
     testAddObat = AddObat()
     testAddObat.connectDB('TestDB_Obat.db')
     testAddObat.clearDB()
     # (ID, Nama, Jumlah, Deskripsi, Kadaluarsa, Cacat)
     res = testAddObat.addEntry((123, 'haha', 23, '', '1/2/2000', -1), True)
+    testAddObat.clearDB()
+    assert res == 1
+
+def test_addEntry_dataDuplikat():
+    addObatApp = QtWidgets.QApplication(sys.argv)
+    testAddObat = AddObat()
+    testAddObat.connectDB('TestDB_Obat.db')
+    testAddObat.clearDB()
+    # (ID, Nama, Jumlah, Deskripsi, Kadaluarsa, Cacat)
+    res = testAddObat.addEntry((123, 'haha', 23, '', '1/2/2000', 0), True)
+    res = testAddObat.addEntry((123, 'haha', 23, '', '1/2/2000', 0), True)
     testAddObat.clearDB()
     assert res == 1
 
